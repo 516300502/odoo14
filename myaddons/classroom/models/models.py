@@ -8,7 +8,6 @@ class classroom(models.Model):
     _description = 'classroom.classroom'
 
 
-
     name = fields.Char()
     value = fields.Integer()
     value2 = fields.Float(compute="_value_pc", store=True)
