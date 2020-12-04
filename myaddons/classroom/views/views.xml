@@ -32,9 +32,9 @@
 <!--      </field>-->
 <!--    </record>-->
 
-    <menuitem name="你好" id="classroom.menu_root"/>
+    <menuitem name="你好" id="classroom.menu_root" web_icon="classroom,static/description/icon.png"/>
 
-    <menuitem name="niha" id="classroom.menu_1" parent="classroom.menu_root"/>
+    <menuitem name="niha" id="classroom.menu_1" parent="classroom.menu_root" />
 
 
       <menuitem name="哈喽" id="classroom.menu_1_list" parent="classroom.menu_1"
