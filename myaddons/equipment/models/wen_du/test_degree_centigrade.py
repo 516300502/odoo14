@@ -59,6 +59,8 @@ class Test_Degree_Centigrade(models.Model):
                                          ('50', '50摄氏度'),
                                          ('85', '80摄氏度')
                                          ], string='温度类型')
+    pvz = fields.Float()
+
 
 
 class Affirm_Degree_Centigrade(models.Model):
