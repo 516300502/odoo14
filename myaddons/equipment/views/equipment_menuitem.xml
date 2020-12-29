@@ -1,0 +1,8 @@
+<odoo>
+  <data>
+<!--    web_icon="equipment,static/description/icon.png"-->
+    <menuitem name="设备数据及报表" id="equipment_menu_root" >
+
+    </menuitem>
+  </data>
+</odoo>

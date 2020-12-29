@@ -1,0 +1,128 @@
+<?xml version="1.0" ?>
+
+<odoo>
+   <record id="mrp_production_costing_figures_form_view" model="ir.ui.view">
+         <field name="name">costfigures.mrp.production.form</field>
+         <field name="model">mrp.production</field>
+         <field name="type">form</field>
+         <field name="inherit_id" ref="mrp.mrp_production_form_view"/>
+         <field name="arch" type="xml">
+            <notebook>
+               <page string="Costing Figures">
+                    <group string='Standard Cost vs Actual Unit Costs' col="3">
+                        <group>
+                            <field name="cur_std_mat_cost" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                            <field name="cur_std_lab_cost" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                            <field name="cur_std_cost" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                            <field name="currency_id" invisible="1"/>
+                        </group>
+                        <group>
+                            <field name="mat_cost_unit" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                            <field name="lab_mac_cost_unit" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                            <field name="direct_cost_unit" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                        </group>
+                        <group>
+                            <field name="delta_mat_cost" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                            <field name="delta_lab_cost" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                            <field name="delta_direct_cost" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                        </group>
+                    </group>
+                    <group col="3">   
+                        <group>
+                            <field name="prod_std_cost" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                        </group>
+                        <group>
+                            <field name="industrial_cost_unit" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                        </group>  
+                        <group>
+                        </group>    
+                    </group>
+                    <group string='Actual Costs' col="3">
+                        <group>
+                            <field name="mat_cost" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                            <field name="lab_mac_cost" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                            <field name="direct_cost" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                        </group>
+                        <group>
+                            <field name="fixed_cost" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                            <field name="by_product_amount" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                            <field name="industrial_cost" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                        </group>
+                        <group>
+                            <label for="qty_produced" string="Quantity Produced"/>
+                            <div class="o_row">
+                                <field name="qty_produced"/>
+                                <field name="product_uom_id" readonly="True" options="{'no_open':True,'no_create':True}" force_save="1" groups="uom.group_uom"/>
+                            </div>
+                        </group>
+                    </group>
+                    <group string='Overhead Costs'>
+                        <group>
+                          <field name="variable_ovh_lab_mac_cost" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                          <field name="fixed_ovh_lab_mac_cost" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                        </group>
+                        <group>
+                          <field name="ovh_product_cost" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                          <field name="ovh_components_cost" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                        </group>
+                    </group>
+               </page>
+            </notebook>
+         </field>
+   </record>
+
+    <record id="mrp_production_analytic_postings_view" model="ir.ui.view">
+        <field name="name">analytic.postings.mrp.production.form</field>
+        <field name="model">mrp.production</field>
+        <field name="type">form</field>
+        <field name="inherit_id" ref="mrp.mrp_production_form_view"/>
+        <field name="arch" type="xml">
+            <button name="action_view_stock_valuation_layers" position="replace">
+                <button string="Valuation" type="object" name="action_view_stock_valuation_layers" class="oe_stat_button" icon="fa-dollar" groups="stock.group_stock_manager" attrs="{'invisible': [('state', 'not in', ['done', 'cost'])]}"/>
+            </button>
+            <button name="button_scrap" position="replace">
+                <button name="button_scrap" type="object" string="Scrap" attrs="{'invisible': ['|', ('state', 'in', ('cancel', 'draft', 'cost')), ('is_locked', '=', False)]}"/>
+            </button>
+            <button name="action_assign" position="replace">
+                <button name="action_assign" attrs="{'invisible': ['|', '|', ('is_locked', '=', False), ('state', 'in', ('draft','done','cancel','cost')), ('reservation_state', '=', 'assigned')]}" string="Check availability" type="object" class="oe_highlight"/>
+            </button>
+            <button name="action_cancel" position="after">
+                <button name="action_economical_closure" type="object" string="Financial Closure" attrs="{'invisible': [('state', 'not in', 'done')]}"/>
+            </button>
+            <button name="action_toggle_is_locked" position="replace">
+                <button name="action_toggle_is_locked" attrs="{'invisible': ['|', '|', ('state', 'in', ('cancel', 'draft', 'cost', 'done')), ('id', '=', False), ('is_locked', '=', False)]}" string="Unlock" groups="mrp.group_mrp_manager" type="object" help="Unlock the manufacturing order to correct what has been consumed or produced."/>
+            </button>
+            <button name="%(mrp.action_mrp_production_moves)d" position="replace">
+                <button name="%(mrp.action_mrp_production_moves)d" type="action" string="Product Moves" class="oe_stat_button" icon="fa-exchange" attrs="{'invisible': [('state', 'not in', ('progress', 'done', 'to_close', 'cost'))]}"/>
+            </button>
+            <button name="%(stock.action_stock_report)d" position="replace">
+                <button name="%(stock.action_stock_report)d" icon="fa-arrow-up" class="oe_stat_button" string="Traceability" type="action" states="done,cost" groups="stock.group_production_lot"/>
+            </button>
+            <field name="state" position="replace">
+                <field name="state" widget="statusbar" statusbar_visible="draft,confirmed,planned,progress,done,cost,"/>
+            </field>
+            <field name="company_id" position="after">
+                <field name="financial_closed" invisible='1'/>
+            </field>
+        </field>
+    </record>
+    
+    <record id="mrp_production_tree" model="ir.ui.view">
+        <field name="name">mrp.production.tree</field>
+        <field name="model">mrp.production</field>
+        <field name="priority">15</field>
+        <field name="arch" type="xml">
+            <tree decoration-bf="message_needaction==True" default_order="date_planned_start desc" decoration-info="state=='confirmed'" decoration-danger="date_planned_start&lt;current_date and state not in ('cost','cancel')" decoration-muted="state in ('cost','cancel')" string="Manufacturing Orders">
+<field name="message_needaction" invisible="1"/>
+                <field name="name"/>
+                <field name="date_planned_start"/>
+                <field name="product_id"/>
+                <field name="product_qty" sum="Total Qty" string="Quantity"/>
+                <field name="product_uom_id" string="Unit of Measure" options="{'no_open':True,'no_create':True}"/>
+                <field name="routing_id" groups="mrp.group_mrp_routings"/>
+                <field name="origin"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+</odoo>

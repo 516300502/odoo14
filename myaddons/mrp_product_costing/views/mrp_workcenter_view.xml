@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="mrp_workcenter_view" model="ir.ui.view">
+        <field name="name">mrp.workcenter.form</field>
+        <field name="model">mrp.workcenter</field>
+        <field name="inherit_id" ref="mrp.mrp_workcenter_view"/>
+        <field name="arch" type="xml">
+            <group name="costing" position="replace">
+            </group>
+            <field name="name" position="after">
+                <field name="wc_type" required="True"/>
+            </field>
+            <notebook>
+                <page string="Costing Data">
+                    <group string='Direct Costs'>
+                        <group>
+                            <field name="cost_hour" widget="monetary" options="{'currency_field': 'currency_id'}" required="True"/>
+                            <field name="cost_hour_fixed" widget="monetary" options="{'currency_field': 'currency_id'}" required="True"/>
+                            <field name="currency_id" invisible="1"/>
+                        </group>
+                        <group>
+                            <field name="analytic_account_id" groups="analytic.group_analytic_accounting" required="True"/>
+                        </group>
+                    </group>
+                    <group>
+                        <group string='Overhead Costs'>       
+                            <label for="costs_overhead_variable_percentage"/>
+                            <div class="o_row">
+                                <field name="costs_overhead_variable_percentage" required="True"/>
+                                %
+                            </div>
+                            <label for="costs_overhead_fixed_percentage"/>
+                            <div class="o_row">
+                                <field name="costs_overhead_fixed_percentage" required="True"/>
+                                %
+                            </div>
+                        </group>
+                        <group>       
+                        </group> 
+                    </group>
+                </page>
+            </notebook>
+        </field>
+    </record>
+</odoo>

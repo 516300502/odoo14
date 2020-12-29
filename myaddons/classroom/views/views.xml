@@ -13,8 +13,8 @@
       </field>
     </record>
 
-    <record model="ir.actions.act_window" id="classroom.action_window">
-      <field name="name">classroom window</field>
+    <record model="ir.actions.act_window" id="classroom_action_window">
+      <field name="name">哈喽</field>
       <field name="res_model">classroom.classroom</field>
       <field name="view_mode">tree,form</field>
     </record>
@@ -32,14 +32,9 @@
 <!--      </field>-->
 <!--    </record>-->
 
-    <menuitem name="你好" id="classroom.menu_root" web_icon="classroom,static/description/icon.png"/>
-
-    <menuitem name="niha" id="classroom.menu_1" parent="classroom.menu_root" />
-
-
-      <menuitem name="哈喽" id="classroom.menu_1_list" parent="classroom.menu_1"
-                action="classroom.action_window"/>
-
+    <menuitem name="你好" id="classroom_menu_root" web_icon="classroom,static/description/icon.png"/>
+            <menuitem name="niha" id="classroom_menu_1" parent="classroom_menu_root"/>
+                <menuitem name="哈喽" id="classroom_menu_1_list" parent="classroom_menu_1" sequence="1" action="classroom_action_window"/>
 
   </data>
 </odoo>

@@ -1,0 +1,41 @@
+<?xml version="1.0" ?>
+
+<odoo>
+    <record id="mrp_production_dates_form_view" model="ir.ui.view">
+        <field name="name">mrp production dates form</field>
+        <field name="model">mrp.production</field>
+        <field name="inherit_id" ref="mrp.mrp_production_form_view"/>
+        <field name="arch" type="xml">
+            <field name="company_id" position="after">
+                <div class="o_row o_td_label">
+                    <label for="date_planned_start_wo" string="Scheduled Dates" attrs="{'invisible': [('date_planned_start_wo', '=', False)]}"/>
+                </div>
+                <div class="o_row">
+                    <field name="date_planned_start_wo" attrs="{'invisible': [('date_planned_start_wo', '=', False)]}"/>
+                    <label for="date_planned_finished_wo" string="to" attrs="{'invisible': [('date_planned_start_wo', '=', False)]}"/>
+                    <field name="date_planned_finished_wo" attrs="{'invisible': [('date_planned_start_wo', '=', False)]}"/>
+                 </div>
+                <div class="o_row o_td_label">
+                    <label for="date_actual_start_wo" string="Actual Dates" attrs="{'invisible': [('state', 'in', ('draft','confirmed','planned','cancel'))]}"/>
+                </div>
+                <div class="o_row">
+                    <field name="date_actual_start_wo" attrs="{'invisible': [('state', 'in', ('draft','confirmed','planned','cancel'))]}" readonly="1"/>
+                    <label for="date_actual_finished_wo" string="to" attrs="{'invisible': [('state', 'in', ('draft','confirmed','planned','cancel'))]}" />
+                    <field name="date_actual_finished_wo" attrs="{'invisible': [('state', 'in', ('draft','confirmed','planned','cancel'))]}" readonly="1"/>
+                 </div>
+            </field>
+            <label for="date_planned_start" position="attributes">
+                <attribute name="attrs">{'invisible': [('routing_id', '!=', False)]}</attribute>
+            </label>
+            <field name="date_planned_start" position="attributes">
+                <attribute name="attrs">{'invisible': [('routing_id', '!=', False)],'readonly': [('state', '!=', 'draft')]}</attribute>
+            </field>
+            <label for="date_planned_finished" position="attributes">
+                <attribute name="attrs">{'invisible': [('routing_id', '!=', False)]}</attribute>
+            </label>
+            <field name="date_planned_finished" position="attributes">
+                <attribute name="attrs">{'invisible': [('routing_id', '!=', False)],'readonly': [('state', '!=', 'draft')]}</attribute>
+            </field>
+        </field>
+    </record>
+</odoo>

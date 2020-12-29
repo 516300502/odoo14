@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+    <record id="mrp_bom_view" model="ir.ui.view">
+        <field name="name">mrp.bom.form</field>
+        <field name="model">mrp.bom</field>
+        <field name="inherit_id" ref="mrp.mrp_bom_form_view"/>
+        <field name="arch" type="xml">
+            <notebook>
+                <page string="Costing Data">
+                    <group string='Overhead Costs'>
+                        <group >
+                            <label for="costs_overhead_product_percentage"/>
+                            <div class="o_row">
+                                <field name="costs_overhead_product_percentage" required="True"/>
+                                %
+                            </div>
+                            <label for="costs_overhead_components_percentage"/>
+                            <div class="o_row">
+                                <field name="costs_overhead_components_percentage" required="True"/>
+                                %
+                            </div>
+                        </group>
+                        <group>
+                            <field name="analytic_account_id" groups="analytic.group_analytic_accounting" required="True"/>
+                        </group>
+                    </group>
+                    <group string='Variances Analysis'>
+                        <group >
+                            <field name="costs_planned_variances_analytic_account_id" groups="analytic.group_analytic_accounting" required="True"/>
+                            <field name="costs_material_variances_analytic_account_id" groups="analytic.group_analytic_accounting" required="True"/>
+                            <field name="costs_direct_variances_analytic_account_id" groups="analytic.group_analytic_accounting" required="True"/>
+                        </group>
+                        <group>
+                        </group>
+                    </group>
+                </page>
+            </notebook>
+        </field>
+    </record>
+</odoo>

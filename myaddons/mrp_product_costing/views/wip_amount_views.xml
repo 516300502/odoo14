@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="wip_amount_tree" model="ir.ui.view">
+        <field name="name">stock.move.line.tree</field>
+        <field name="model">stock.move.line</field>
+        <field name="arch" type="xml">
+            <tree decoration-muted="state == 'cancel'" decoration-danger="(state not in ('cancel','done'))" string="Move Lines" create="0" default_order="date">
+                <field name="date"/>
+                <field name="reference"
+                       invisible="context.get('no_reference', False)"/>
+                <field name="product_id"/>
+                <field name="lot_id" groups="stock.group_production_lot"/>
+                <field name="standard_price"/>
+                <field name="qty_done"/>
+                <field name="product_uom_id" options="{'no_open': True, 'no_create': True}" groups="uom.group_uom"/>
+                <field name="total_price" sum="总成本" string="总成本" readonly="1" optional="show"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+    <record id="wip_amount_form" model="ir.ui.view">
+        <field name="name">stock.move.line.form</field>
+        <field name="model">stock.move.line</field>
+        <field name="arch" type="xml">
+            <form string="Move Lines" create="0" edit="0">
+                <header>
+                    <field name="state" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <field name="company_id" invisible="1"/>
+                    <field name="picking_id" invisible="1"/>
+                    <group>
+                        <group>
+                            <field name="date"/>
+                            <field name="reference" string="产品参考"/>
+                            <field name="product_id"/>
+                        </group>
+                        <group>
+                            <label for="standard_price" string="当前成本"/>
+                            <div class="o_row">
+                                <field name="standard_price"/>
+                            </div>
+                            <label for="standard_price" string="总成本"/>
+                            <div class="o_row">
+                                <field name="total_price"/>
+                            </div>
+                            <field name="product_uom_category_id" invisible="1"/>
+                            <label for="qty_done" string="完成数量"/>
+                            <div class="o_row">
+                                <field name="qty_done"/>
+                                <field name="product_uom_id" options="{'no_create': True}" string="Unit of Measure" groups="uom.group_uom"/>
+                            </div>
+                            <field name="lot_id" groups="stock.group_production_lot" context="{'default_product_id': product_id, 'active_picking_id': picking_id}" attrs="{'invisible': [('lot_id', '=', False),('lot_name', '!=', False)]}"/>
+                            <field name="lot_name" groups="stock.group_production_lot" attrs="{'invisible': ['|',('lot_id', '!=', False),('lot_name', '=', False)]}"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="wip_amount_search" model="ir.ui.view">
+        <field name="name">stock.move.line.search</field>
+        <field name="model">stock.move.line</field>
+        <field name="inherit_id" ref="stock.stock_move_line_view_search"/>
+        <field name="arch" type="xml">
+            <field name="product_id" position="after">
+                <group expand="0" string="Group By">
+                    <filter string="Source Location" name="groupby_location_id" domain="[]" context="{'group_by': 'location_id'}" groups="stock.group_stock_multi_locations"/>
+                </group>
+            </field>
+        </field>
+    </record>
+    <record model="ir.actions.act_window" id="action_wip_amount">
+            <field name="name">在制品成本</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">stock.move.line</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{'search_default_groupby_product_id': 1}</field>
+            <field name="view_ids" eval="[(5, 0, 0),
+(0, 0, {'view_mode': 'tree', 'view_id': ref('wip_amount_tree')}),
+(0, 0, {'view_mode': 'form', 'view_id': ref('wip_amount_form')})]"/>
+            <field name="domain">[('move_id.raw_material_production_id', '=', active_id)]</field>
+    </record>
+
+
+</odoo>

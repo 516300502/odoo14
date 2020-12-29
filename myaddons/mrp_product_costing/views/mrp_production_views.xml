@@ -1,0 +1,121 @@
+<?xml version="1.0" ?>
+
+<odoo>
+   <record id="mrp_production_costing_figures_form_view" model="ir.ui.view">
+         <field name="name">costfigures.mrp.production.form</field>
+         <field name="model">mrp.production</field>
+         <field name="type">form</field>
+         <field name="inherit_id" ref="mrp.mrp_production_form_view"/>
+         <field name="arch" type="xml">
+            <field name="company_id" position="after">
+                <field name="analytic_account_id"/>
+            </field>
+            <notebook>
+<!--                string="Costing Figures 1"-->
+               <page string="成本图1">
+                    <group string='计划单位成本合计 vs 实际单位成本合计' col="3">
+                        <group string='计划成本合计'>
+                            <field name="cur_std_mat_cost" string='物料成本' widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                            <field name="cur_std_lab_cost" string='直接可变成本' widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                            <field name="cur_std_fixed_cost" string='直接固定成本' widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                            <field name="cur_std_byproduct_amount" string='副产品金额' widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                            <field name="cur_std_direct_cost" string='全部直接成本' widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                            <field name="currency_id" invisible="1"/>
+                        </group>
+                        <group string='实际单位成本合计'>
+                            <field name="mat_cost_unit" string='物料成本' widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                            <field name="lab_cost_unit" string='直接可变成本' widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                            <field name="fixed_cost_unit" string='直接固定成本' widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                            <field name="by_product_unit_amount" string='副产品金额'  widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                            <field name="direct_cost_unit" string='全部直接成本' widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                        </group>
+                        <group string='差异'>
+                            <field name="delta_mat_cost" string='物料成本' widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                            <field name="delta_lab_cost" string='直接可变成本' widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                            <field name="delta_fixed_cost" string='直接固定成本' widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                            <field name="delta_byproduct" string='副产品金额' widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                            <field name="delta_direct_cost" string='全部直接成本' widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                        </group>
+                    </group>
+                    <group col="3">
+                        <group>
+                            <field name="prod_std_cost" string="当前标准成本" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                        </group>
+                        <group>
+                        </group>
+                        <group>
+                        </group>
+                    </group>
+               </page>
+               <page string="成本图2">
+                    <group string='实际成本' col="3">
+                        <group >
+                            <field name="mat_cost" string='物料成本' widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                            <field name="lab_cost" string='直接可变成本' widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                            <field name="fixed_cost" string='直接固定成本' widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                            <field name="by_product_amount" string='副产品金额' widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                            <field name="direct_cost" string='全部直接成本' widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                        </group>
+                        <group>
+                            <field name="industrial_cost" string='全部' widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                            <field name="industrial_cost_unit" string='全部单位成本' widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                        </group>
+                        <group>
+                            <label for="qty_produced" string="已生产数量"/>
+                            <div class="o_row">
+                                <field name="qty_produced"/>
+                                <field name="product_uom_id" readonly="True" options="{'no_open':True,'no_create':True}" force_save="1" groups="uom.group_uom"/>
+                            </div>
+                            <field name="wip_amount" string="在制品金额" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                        </group>
+                    </group>
+                    <group string='间接成本合计'>
+                        <group>
+                          <field name="variable_ovh_lab_mac_cost" string="间接可变直接成本" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                          <field name="fixed_ovh_lab_mac_cost" string="间接固定直接成本" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                        </group>
+                        <group>
+                          <field name="ovh_product_cost" string="间接完工产品成本" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                          <field name="ovh_components_cost" string="间接组件成本" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                        </group>
+                    </group>
+               </page>
+            </notebook>
+         </field>
+   </record>
+
+    <record id="mrp_production_form_view" model="ir.ui.view">
+        <field name="name">mrp.production.form</field>
+        <field name="model">mrp.production</field>
+        <field name="inherit_id" ref="mrp.mrp_production_form_view" />
+        <field name="arch" type="xml">
+            <xpath expr="//div[hasclass('oe_button_box')]" position="inside">
+                <button
+                    name="%(action_mrp_account_moves)d"
+                    type="action"
+                    string="Account Moves"
+                    class="oe_stat_button"
+                    icon="fa-list"
+                    attrs="{'invisible': [('state', 'not in', ('planned', 'to_close','progress', 'done'))]}"
+                />
+                <button
+                    name="%(action_mrp_analytic_lines)d"
+                    type="action"
+                    string="Analytic Lines"
+                    class="oe_stat_button"
+                    icon="fa-list"
+                    attrs="{'invisible': [('state', 'not in', ('planned', 'to_close','progress', 'done'))]}"
+                />
+                <button
+                    name="%(action_wip_amount)d"
+                    type="action"
+                    string="在制品明细"
+                    class="oe_stat_button"
+                    icon="fa-list"
+                    attrs="{'invisible': [('state', 'in', ('draft','done','cancel'))]}"
+                />
+            </xpath>
+        </field>
+    </record>
+</odoo>
+

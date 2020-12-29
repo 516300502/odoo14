@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+    <record id="view_wip_costing_tree" model="ir.ui.view" >
+        <field name="name">wip.costing.tree</field>
+        <field name="model">mrp.production</field>
+        <field name="priority">21</field>
+        <field name="arch" type="xml">
+            <tree decoration-info="state == 'progress'" string="Production Orders" create="false">
+                <field name="name"/>
+                <field name="product_id"/>
+                <field name="qty_produced"/>
+                <field name="product_uom_id" groups="uom.group_uom"/>
+                <field name="mat_cost" widget="monetary" string="实际物料成本"/>
+                <field name="lab_cost" widget="monetary" string="实际直接可变成本"/>
+                <field name="fixed_cost" widget="monetary" string="实际直接固定费用成本"/>
+                <field name="direct_cost" widget="monetary" string="实际全部直接成本"/>
+                <field name="industrial_cost" widget="monetary" string="实际全部成本"/>
+                <field name="wip_amount" widget="monetary" string="在制品成本"/>
+                <field name="currency_id" invisible="True"/>
+                <field name="state" invisible="True"/>
+            </tree>
+        </field>
+    </record>
+    <record id="wip_costing_action" model="ir.actions.act_window">
+        <field name="name">在制品成本</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">mrp.production</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('state','=','progress')]</field>
+    </record>
+    <record model="ir.actions.act_window.view" id="wip_costing_tree_link">
+        <field name="sequence" eval="1"/>
+        <field name="view_mode">tree</field>
+        <field name="view_id" ref="view_wip_costing_tree"/>
+        <field name="act_window_id" ref="wip_costing_action"/>
+    </record>
+    <menuitem id="menu_wip_costing"
+        parent="mrp.menu_mrp_reporting"
+        name="在制品成本"
+        action="wip_costing_action"
+        sequence="39"
+        groups="mrp.group_mrp_manager"/>
+</odoo>

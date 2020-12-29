@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+    <record id="mrp_product_costing_parameters_form" model="ir.ui.view">
+        <field name="name">mrp.product.costing.parameters.form</field>
+        <field name="model">mrp.product.costing.parameters</field>
+        <field name="arch" type="xml">
+            <form string="MRP Product Costing Parameters">
+                <sheet>
+                    <h2>产品成本参数</h2>
+                    <group>
+                        <group>
+                            <field name="labour_cost_account_id" required="True" string="人工成本账户*"/>
+                            <field name="machine_run_cost_account_id" required="True" string="设备运行成本账户*"/>
+                        </group>
+                        <group>
+                            <field name="planned_variances_account_id" required="True" string="计划可变成本账户*"/>
+                            <field name="material_variances_account_id" required="True" string="物料可变成本账户*"/>
+                            <field name="other_variances_account_id" required="True" string="其他可变成本账户*"/>
+                            <field name="company_id" invisible="True"/>
+                        </group>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="manufacturing_journal_id" required="True" string="生产日记账号*"/>
+                        </group>
+                        <group>
+                            <field name="cost_analytic_account_id" groups="analytic.group_analytic_accounting" required="True"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="mrp_product_costing_parameters_action">
+        <field name="name">MRP Product Costing Parameters</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">mrp.product.costing.parameters</field>
+        <field name="view_mode">form</field>
+    </record>
+
+    <menuitem id="menu_mrp_product_costing_parameters"
+              name="产品成本参数"
+            action="mrp_product_costing_parameters_action"
+            sequence="101"
+            parent="mrp.menu_mrp_configuration"
+            groups="mrp.group_mrp_manager"
+            />
+<!--    name="Product Costing Parameters"-->
+</odoo>
+
