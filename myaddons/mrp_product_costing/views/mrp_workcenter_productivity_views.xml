@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="mrp_production_workordercenter_form_view_inherit" model="ir.ui.view">
+        <field name="name">mrp.production.workorder.form.view.inherit</field>
+        <field name="model">mrp.workorder</field>
+        <field name="inherit_id" ref="mrp.mrp_production_workorder_form_view_inherit"/>
+        <field name="arch" type="xml">
+            <field name="date_end" position="after">
+                <field name="setup_duration"/>
+                <field name="working_duration"/>
+                <field name="teardown_duration"/>
+                <field name="overall_duration"/>
+            </field>
+        </field>
+    </record>
+</odoo>
+

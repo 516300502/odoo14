@@ -12,3 +12,4 @@ from . import mrp_variances_analysis
 from . import mrp_economical_closure
 from . import mrp_production_dates
 from . import wip_amount
+from . import mrp_workcenter_productivity

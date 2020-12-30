@@ -30,6 +30,8 @@
         'views/mrp_production_views.xml',
         'views/mrp_product_costing_views.xml',
         'views/mrp_wip_costing_views.xml',
+        'views/mrp_workcenter_productivity_views.xml',
+
 
     ],
   'application': False,
