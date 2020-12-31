@@ -1,0 +1,54 @@
+<odoo>
+  <data>
+
+    <record id="line_test_tree" model="ir.ui.view">
+      <field name="name">siken.data</field>
+      <field name="model">siken.data</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="bodyno"/>
+          <field name="pilc"/>
+          <field name="kaisuu"/>
+          <field name="kiatu"/>
+          <field name="sdata01"/>
+          <field name="sdata02"/>
+          <field name="sdata03"/>
+          <field name="sdata04"/>
+          <field name="sdata65"/>
+          <field name="sikenday"/>
+        </tree>
+      </field>
+    </record>
+
+    <record id="line_test_form" model="ir.ui.view">
+      <field name="name">siken.data</field>
+      <field name="model">siken.data</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+            <group col="6">
+                <field name="bodyno" col="2"/>
+                <field name="pilc" col="2"/>
+                <field name="kaisuu" col="2"/>
+                <field name="kiatu" col="2"/>
+                <field name="sdata01" col="2"/>
+                <field name="sdata02" col="2"/>
+                <field name="sdata03" col="2"/>
+                <field name="sdata04" col="2"/>
+                <field name="sdata65" col="2"/>
+                <field name="sikenday" col="2"/>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record id="line_test_action_window" model="ir.actions.act_window">
+      <field name="name">直线测试</field>
+      <field name="res_model">siken.data</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+
+  </data>
+</odoo>

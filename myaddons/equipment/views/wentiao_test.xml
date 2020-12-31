@@ -1,0 +1,52 @@
+<odoo>
+  <data>
+
+    <record id="wentiao_test_tree" model="ir.ui.view">
+      <field name="name">product.information</field>
+      <field name="model">product.information</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="rngno" string="恒温槽"/>
+          <field name="sikenday"/>
+          <field name="portno"/>
+          <field name="bodyno"/>
+          <field name="pilc"/>
+          <field name="kaisuu"/>
+          <field name="result"/>
+          <field name="precision"/>
+          <field name="affirm_result"/>
+        </tree>
+      </field>
+    </record>
+
+    <record id="wentiao_test_form" model="ir.ui.view">
+      <field name="name">product.information</field>
+      <field name="model">product.information</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+            <group col="6">
+                <field name="rngno" string="恒温槽" col="2"/>
+                <field name="sikenday" col="2"/>
+                <field name="portno" col="2"/>
+                <field name="bodyno" col="2"/>
+                <field name="pilc" col="2"/>
+                <field name="kaisuu" col="2"/>
+                <field name="result" col="2"/>
+                <field name="precision" col="2"/>
+                <field name="affirm_result" col="2"/>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record id="wentiao_test_action_window" model="ir.actions.act_window">
+      <field name="name">温调测试</field>
+      <field name="res_model">product.information</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+
+  </data>
+</odoo>

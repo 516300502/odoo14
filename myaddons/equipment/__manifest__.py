@@ -23,13 +23,18 @@
 
     # always loaded
     'data': [
-        # 'security/ir.model.access.csv',
-        'views/views.xml',
-        'views/templates.xml',
-        # 'views/equipment_menuitem.xml',
+        'security/ir.model.access.csv',
+        'views/c_capacity_test.xml',
+        'views/line_test.xml',
+        'views/taidt_test.xml',
+        'views/rang1_test.xml',
+        'views/wentiao_test.xml',
+        'views/equipment_menuitem.xml',
     ],
     # only loaded in demonstration mode
     'demo': [
         'demo/demo.xml',
     ],
+    'application': True,
+    'images': ['static/description/icon.png'],
 }

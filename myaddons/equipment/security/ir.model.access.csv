@@ -1,2 +1,7 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_equipment_equipment,equipment.equipment,model_equipment_equipment,base.group_user,1,1,1,1
+access_tblstd,tblstd,model_tblstd,base.group_user,1,1,1,1
+access_tbltestdata,tbltestdata,model_tbltestdata,base.group_user,1,1,1,1
+access_siken_data,siken_data,model_siken_data,base.group_user,1,1,1,1
+access_fcxrang_siken_data,fcxrang_siken_data,model_fcxrang_siken_data,base.group_user,1,1,1,1
+access_sehin_data,sehin_data,model_sehin_data,base.group_user,1,1,1,1
+access_product_information,product_information,model_product_information,base.group_user,1,1,1,1

@@ -1,0 +1,56 @@
+<odoo>
+  <data>
+
+    <record id="rang1_test_tree" model="ir.ui.view">
+      <field name="name">sehin.data</field>
+      <field name="model">sehin.data</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="bodyno"/>
+          <field name="tagno"/>
+          <field name="kiban"/>
+          <field name="sikenkeka"/>
+          <field name="ondo"/>
+          <field name="situdo"/>
+          <field name="kiatu"/>
+          <field name="situdo"/>
+          <field name="sikendoc"/>
+          <field name="sikenday"/>
+          <field name="updateday"/>
+        </tree>
+      </field>
+    </record>
+
+    <record id="rang1_test_form" model="ir.ui.view">
+      <field name="name">sehin.data</field>
+      <field name="model">sehin.data</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+            <group col="6">
+                <field name="bodyno"/>
+                <field name="tagno"/>
+                <field name="kiban"/>
+                <field name="sikenkeka"/>
+                <field name="ondo"/>
+                <field name="situdo"/>
+                <field name="kiatu"/>
+                <field name="situdo"/>
+                <field name="sikendoc"/>
+                <field name="sikenday"/>
+                <field name="updateday"/>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record id="rang1_test_action_window" model="ir.actions.act_window">
+      <field name="name">量程测试</field>
+      <field name="res_model">sehin.data</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+
+  </data>
+</odoo>

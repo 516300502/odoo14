@@ -1,8 +1,12 @@
 <odoo>
   <data>
 <!--    web_icon="equipment,static/description/icon.png"-->
-    <menuitem name="设备数据及报表" id="equipment_menu_root" >
-
-    </menuitem>
+    <menuitem name="品质" id="equipment_menu_root" sequence="10"/>
+        <menuitem name="数据采集" id="equipment_menu_root1" parent="equipment_menu_root" sequence="0"/>
+            <menuitem name="C容量测试" id="c_capacity_test_menu" parent="equipment_menu_root1" action="c_capacity_test_action_window"/>
+            <menuitem name="直线测试" id="line_test_menu" parent="equipment_menu_root1" action="line_test_action_window"/>
+            <menuitem name="片均压测试" id="taidt_test_menu" parent="equipment_menu_root1" action="taidt_test_action_window"/>
+            <menuitem name="量程测试" id="rang1_test_menu" parent="equipment_menu_root1" action="rang1_test_action_window"/>
+            <menuitem name="温调测试" id="wentiao_test_menu" parent="equipment_menu_root1" action="wentiao_test_action_window"/>
   </data>
 </odoo>

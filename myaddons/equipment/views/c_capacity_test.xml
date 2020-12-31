@@ -1,0 +1,51 @@
+<odoo>
+  <data>
+  
+    <record id="c_capacity_test_tree" model="ir.ui.view">
+      <field name="name">tbltestdata</field>
+      <field name="model">tbltestdata</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="bodyno"/>
+          <field name="testcnt" string="次数"/>
+          <field name="stdkind"/>
+          <field name="testdate" string="实验日"/>
+          <field name="test_result"/>
+          <field name="td_c1" string="C1"/>
+          <field name="td_d1" string="D1"/>
+          <field name="td_c2" string="C2"/>
+          <field name="td_d2" string="D2"/>
+        </tree>
+      </field>
+    </record>
+    <record id="c_capacity_test_form" model="ir.ui.view">
+      <field name="name">tbltestdata</field>
+      <field name="model">tbltestdata</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+            <group col="6">
+              <field name="bodyno"/>
+              <field name="testcnt" string="次数"/>
+              <field name="stdkind"/>
+              <field name="testdate" string="实验日"/>
+              <field name="test_result"/>
+              <field name="td_c1" string="C1"/>
+              <field name="td_d1" string="D1"/>
+              <field name="td_c2" string="C2"/>
+              <field name="td_d2" string="D2"/>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    
+    <record id="c_capacity_test_action_window" model="ir.actions.act_window">
+      <field name="name">C容量测试</field>
+      <field name="res_model">tbltestdata</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+  </data>
+</odoo>
