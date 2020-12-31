@@ -16,10 +16,10 @@ class MrpProduction(models.Model):
     def button_plan(self):
         res = super(MrpProduction, self).button_plan()
         for production in self:
-            if production.date_start_wo:
-                production.date_planned_start_wo = production.date_start_wo
-            else:
-                production.date_planned_start_wo = datetime.now()
+            # if production.date_start_wo:
+            #     production.date_planned_start_wo = production.date_start_wo
+            # else:
+            production.date_planned_start_wo = datetime.now()
             production.date_planned_finished_wo = False
             planned_date = fields.Datetime.from_string(production.date_planned_start_wo)
             values = {}
