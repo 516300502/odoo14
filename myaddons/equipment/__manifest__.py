@@ -23,6 +23,7 @@
 
     # always loaded
     'data': [
+        'report/c_tbltest_data_report_views.xml',
         'security/ir.model.access.csv',
         'views/c_capacity_test.xml',
         'views/line_test.xml',

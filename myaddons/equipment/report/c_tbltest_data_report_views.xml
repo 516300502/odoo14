@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+    <data>
+
+        <report
+                id="action_ctbltest_data_report"
+                string="c容量测试报告"
+                model="tbltestdata"
+                report_type="qweb-html"
+                file="equipment.ctbltest_data"
+                name="equipment.ctbltest_data"
+                print_report_name="c容量测试报告"
+        />
+
+        <!--测试-->
+        <template id="ctbltest_data">
+            <t t-call="web.html_container">
+                <t t-set="doc" t-value="docs[0].with_context({'lang':'en_US'})"/>
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <table>
+                            <caption>火隐忍者演员表</caption>
+                                <tr>
+                                    <th>
+                                        <span> Body No.:</span>
+                                    </th>
+                                    <td>
+                                        <span t-esc="doc[0].bodyno" />
+                                    </td>
+                                    <th>
+                                        <span > コマＮｏ.:</span>
+                                    </th>
+                                    <td >
+                                        <span t-esc="doc[0].komano"/>
+                                    </td>
+
+                                    <th>
+                                        <span> 封入液Ｎｏ.:</span>
+                                    </th>
+                                    <td style="text-align:right;">
+                                        <span t-esc="doc[0].stdkind"/>
+                                    </td>
+                                </tr>
+                        </table>
+
+                    </div>
+                </t>
+            </t>
+        </template>
+
+    </data>
+</odoo>
