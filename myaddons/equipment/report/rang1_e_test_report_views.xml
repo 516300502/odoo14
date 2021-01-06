@@ -1,0 +1,409 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+    <data>
+
+        <report
+                id="action_rang1_e_test_report"
+                string="量程测试报告(英文)"
+                model="sehin.data"
+                report_type="qweb-html"
+                file="equipment.rang1_e_test"
+                name="equipment.rang1_e_test"
+
+        />
+
+        <!--测试-->
+        <template id="rang1_e_test">
+            <t t-call="web.html_container">
+                <t t-set="doc" t-value="docs[0].with_context({'lang':'en_US'})"/>
+                <t t-call="web.external_layout">
+                    <style type="text/css">
+                        .RE{
+                        width: 79.4%;
+                        height: 100px;
+                        border: 1px solid;
+                        margin-top:20px;
+                        margin: 0 auto;
+                        }
+                    </style>
+                    <div>
+                        <div style="margin-top:10px;" class="row">
+                            <h2 style="margin-top:10px;" class="col-12 text-center">
+                                FCX-SERIES TRANSMITTER INSPECTION REPORT
+                            </h2>
+                        </div>
+                    </div>
+
+                    <div class="page">
+                        <table border="0" cellspacing="0" cellpadding="5" width="80%" height="40" align="center">
+                            <tr>
+                                <td>
+                                    <table border="1" cellspacing="0" cellpadding="5" width="100%" height="40"
+                                           align="left">
+                                        <span>Ⅰ.SPECIFICATION</span>
+                                        <tbody>
+                                            <tr>
+                                                <td style="text-align:center" rowspan="2">
+                                                    <span>ARTICLE</span>
+                                                </td>
+                                                <td style="text-align:center" rowspan="2">
+                                                    <span>PRESSURE TRANSMITER</span>
+                                                </td>
+                                                <td style="text-align:center">
+                                                    <span>TSG NO.</span>
+                                                </td>
+                                                <td style="text-align:center">
+                                                    <span t-esc="doc[0].tagno"/>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="text-align:center">
+                                                    <span>TYPE</span>
+                                                </td>
+                                                <td style="text-align:center">
+                                                    <span t-esc="doc[0].tagno"/>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="text-align:center">
+                                                    <span>POWER SOURCE</span>
+                                                </td>
+                                                <td style="text-align:center">
+                                                    <span>V</span>
+                                                </td>
+                                                <td style="text-align:center">
+                                                    <span>RANGE</span>
+                                                </td>
+                                                <td style="text-align:center">
+                                                    <span t-esc="doc[0].fullrange"/>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="text-align:center">
+                                                    <span>WORKING NO.</span>
+                                                </td>
+                                                <td style="text-align:center">
+                                                    <span t-esc="doc[0].seiban"/>
+                                                </td>
+                                                <td style="text-align:center">
+                                                    <span>SERIAL NO.</span>
+                                                </td>
+                                                <td style="text-align:center">
+                                                    <span t-esc="doc[0].kiban"/>   <!--(doc[0].bodyno)-->
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                        <table style="margin-top:10px;" border="0" cellspacing="0" cellpadding="5" width="80%"
+                               height="400" align="center">
+                            <tr>
+                                <td>
+                                    <table border="1" cellspacing="0" width="100%" height="400" align="left">
+                                        <span>Ⅱ.TEST - INSPECTION</span>
+                                        <tbody>
+                                            <tr>
+                                                <td class="text-center" colspan="2">
+                                                    <span>TEST ITEM</span>
+                                                </td>
+                                                <td class="text-center">
+                                                    <span>STAND,VALUE</span>
+                                                </td>
+                                                <td class="text-center" colspan="4">
+                                                    <span>MEAS.VALUE</span>
+                                                </td>
+                                                <td class="text-center">
+                                                    <span>ACCEPTED</span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="text-align:center" rowspan="9">
+                                                    <span>TEST OF MEASURED ACCURACY</span>
+                                                </td>
+                                                <td style="text-align:center">
+                                                    <span>INPUT</span>
+                                                </td>
+                                                <td style="text-align:center">
+                                                    <span>≦± (%)</span>
+                                                </td>
+                                                <td style="text-align:center" colspan="2">
+                                                    <span>INC.</span>
+                                                </td>
+                                                <td style="text-align:center" colspan="2">
+                                                    <span>DEC.</span>
+                                                </td>
+                                                <td style="text-align:center" rowspan="9">
+                                                    <span t-esc="doc[0].sikenkeka"/>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="text-align:center">
+                                                    <span>()</span>
+                                                </td>
+                                                <td style="text-align:center">
+                                                    <span>(mA)</span>
+                                                </td>
+                                                <td style="text-align:center">
+                                                    <span>(mA)</span>
+                                                </td>
+                                                <td style="text-align:center">
+                                                    <span>(%)</span>
+                                                </td>
+                                                <td style="text-align:center">
+                                                    <span>(mA)</span>
+                                                </td>
+                                                <td style="text-align:center">
+                                                    <span>(%)</span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="text-align:center">
+                                                    <span></span>
+                                                </td>
+                                                <td style="text-align:center">
+                                                    <span></span>
+                                                </td>
+                                                <td style="text-align:center">
+                                                    <span></span>
+                                                </td>
+                                                <td style="text-align:center">
+                                                    <span></span>
+                                                </td>
+                                                <td style="text-align:center">
+                                                    <span></span>
+                                                </td>
+                                                <td style="text-align:center">
+                                                    <span></span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="text-align:center">
+                                                    <span></span>
+                                                </td>
+                                                <td style="text-align:center">
+                                                    <span></span>
+                                                </td>
+                                                <td style="text-align:center">
+                                                    <span></span>
+                                                </td>
+                                                <td style="text-align:center">
+                                                    <span></span>
+                                                </td>
+                                                <td style="text-align:center">
+                                                    <span></span>
+                                                </td>
+                                                <td style="text-align:center">
+                                                    <span></span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="text-align:center">
+                                                    <span></span>
+                                                </td>
+                                                <td style="text-align:center">
+                                                    <span></span>
+                                                </td>
+                                                <td style="text-align:center">
+                                                    <span></span>
+                                                </td>
+                                                <td style="text-align:center">
+                                                    <span></span>
+                                                </td>
+                                                <td style="text-align:center">
+                                                    <span></span>
+                                                </td>
+                                                <td style="text-align:center">
+                                                    <span></span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="text-align:center">
+                                                    <span></span>
+                                                </td>
+                                                <td style="text-align:center">
+                                                    <span></span>
+                                                </td>
+                                                <td style="text-align:center">
+                                                    <span></span>
+                                                </td>
+                                                <td style="text-align:center">
+                                                    <span></span>
+                                                </td>
+                                                <td style="text-align:center">
+                                                    <span></span>
+                                                </td>
+                                                <td style="text-align:center">
+                                                    <span></span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="text-align:center">
+                                                    <span></span>
+                                                </td>
+                                                <td style="text-align:center">
+                                                    <span></span>
+                                                </td>
+                                                <td style="text-align:center">
+                                                    <span></span>
+                                                </td>
+                                                <td style="text-align:center">
+                                                    <span></span>
+                                                </td>
+                                                <td style="text-align:center">
+                                                    <span></span>
+                                                </td>
+                                                <td style="text-align:center">
+                                                    <span></span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="text-align:center">
+                                                    <span></span>
+                                                </td>
+                                                <td style="text-align:center">
+                                                    <span></span>
+                                                </td>
+                                                <td style="text-align:center">
+                                                    <span></span>
+                                                </td>
+                                                <td style="text-align:center">
+                                                    <span></span>
+                                                </td>
+                                                <td style="text-align:center">
+                                                    <span></span>
+                                                </td>
+                                                <td style="text-align:center">
+                                                    <span></span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="text-align:center">
+                                                    <span></span>
+                                                </td>
+                                                <td style="text-align:center">
+                                                    <span></span>
+                                                </td>
+                                                <td style="text-align:center">
+                                                    <span></span>
+                                                </td>
+                                                <td style="text-align:center">
+                                                    <span></span>
+                                                </td>
+                                                <td style="text-align:center">
+                                                    <span></span>
+                                                </td>
+                                                <td style="text-align:center">
+                                                    <span></span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="text-align:center" colspan="2">
+                                                    <span>INSULATION RESISTANCE</span>
+                                                </td>
+                                                <td style="text-align:center">
+                                                    <span>DC500V ≧ 100MΩ</span>
+                                                </td>
+                                                <td style="text-align:center" colspan="4">
+                                                    <span></span>
+                                                </td>
+                                                <td style="text-align:center">
+                                                    <span>GOOD</span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="text-align:center" colspan="2">
+                                                    <span>WITHSTAND VOLTAGE</span>
+                                                </td>
+                                                <td style="text-align:center">
+                                                    <span>AC500V，1MIN</span>
+                                                </td>
+                                                <td style="text-align:center" colspan="4">
+                                                    <span></span>
+                                                </td>
+                                                <td style="text-align:center">
+                                                    <span>GOOD</span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="text-align:center" colspan="2">
+                                                    <span>APPEARANCE</span>
+                                                </td>
+                                                <td style="text-align:center" colspan="5">
+                                                    <span></span>
+                                                </td>
+                                                <td style="text-align:center">
+                                                    <span>GOOD</span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="text-align:center" colspan="2">
+                                                    <span>PRESSURE TEST</span>
+                                                </td>
+                                                <td style="text-align:center" colspan="5">
+                                                    <span></span>
+                                                </td>
+                                                <td style="text-align:center">
+                                                    <span>GOOD</span>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                        <div class="RE">
+                            <span>REFERENCE</span>
+                        </div>
+                        <table border="0" cellspacing="0" cellpadding="5" width="80%" height="40" align="center">
+                            <tr>
+                                <td>
+                                    <table border="1" cellspacing="0" cellpadding="5" width="100%" height="40"
+                                           align="left">
+                                        <tbody>
+                                            <tr>
+                                                <td style="text-align:center">
+                                                    <span>TEST CONDITION</span>
+                                                </td>
+                                                <td style="text-align:center">
+                                                    <span>TEMP.</span>
+                                                    <span t-esc="doc[0].ondo"/>
+                                                </td>
+                                                <td style="text-align:center">
+                                                    <span>HUMID</span>
+                                                    <span t-esc="doc[0].situdo"/>
+                                                </td>
+                                                <td style="text-align:center">
+                                                    <span>ATM.PRES.</span>
+                                                    <span t-esc="doc[0].kiatu"/>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="text-align:left" colspan="2" rowspan="2">
+                                                    <span>Date.</span>
+                                                    <span t-esc="doc[0].kanryoday"/>
+                                                </td>
+                                                <td style="text-align:left" colspan="2">
+                                                    <span>Approved by</span>
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td style="text-align:left" colspan="2">
+                                                    <span>Prepared by</span>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </t>
+            </t>
+        </template>
+
+    </data>
+</odoo>

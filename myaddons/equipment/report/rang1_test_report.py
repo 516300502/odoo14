@@ -17,5 +17,5 @@ class Rang1_test_report(models.AbstractModel):
         return {
             'docids': docids,
             'docs': docs,
-            'report_title': '量程测试报告'
+            'report_title': '量程测试报告(中文)'
         }

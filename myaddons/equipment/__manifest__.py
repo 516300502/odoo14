@@ -23,6 +23,7 @@
 
     # always loaded
     'data': [
+        'report/rang1_e_test_report_views.xml',
         'report/rang1_test_report_views.xml',
         'report/taidt_test_report_views.xml',
         'report/line_test_report_views.xml',
