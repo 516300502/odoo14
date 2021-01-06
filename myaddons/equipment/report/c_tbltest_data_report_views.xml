@@ -10,7 +10,7 @@
                 report_type="qweb-html"
                 file="equipment.ctbltest_data"
                 name="equipment.ctbltest_data"
-                print_report_name="c容量测试报告"
+
         />
 
         <!--测试-->
@@ -18,9 +18,16 @@
             <t t-call="web.html_container">
                 <t t-set="doc" t-value="docs[0].with_context({'lang':'en_US'})"/>
                 <t t-call="web.external_layout">
+                    <div>
+                        <div style="margin-top:20px;" class="row">
+                            <h3 style="margin-top:20px;" class="col-12 text-center">
+                                c容量测试报告
+                            </h3>
+                        </div>
+                    </div>
+
                     <div class="page">
-                        <table>
-                            <caption>火隐忍者演员表</caption>
+                        <table width="80%" align="center">
                                 <tr>
                                     <th>
                                         <span> Body No.:</span>
@@ -38,12 +45,91 @@
                                     <th>
                                         <span> 封入液Ｎｏ.:</span>
                                     </th>
-                                    <td style="text-align:right;">
+                                    <td>
                                         <span t-esc="doc[0].stdkind"/>
+                                    </td>
+                                    <th>
+                                        <span> 实验日:</span>
+                                    </th>
+                                    <td>
+                                        <span t-esc="doc[0].testdate"/>
                                     </td>
                                 </tr>
                         </table>
+                        <table border="1" cellspacing="0" cellpadding="5" width="80%" height="80" align="center">
+                            <thead>
+                                <tr>
+                                    <th class="text-center">
+                                        <strong>100Khz</strong>
+                                    </th>
+                                    <th class="text-center">
+                                        <strong>C1</strong>
+                                    </th>
+                                    <th class="text-center">
+                                        <strong>C2</strong>
+                                    </th>
+                                    <th class="text-center">
+                                        <strong>C1——C2</strong>
+                                    </th>
+                                    <th class="text-center">
+                                        <strong>综合结果</strong>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td style="text-align:center"> c容量(PF)</td>
+                                    <td style="text-align:center">
+                                        <span t-esc="doc[0].td_c1"/>
+                                    </td>
+                                    <td style="text-align:center">
+                                        <span t-esc="doc[0].td_c2"/>
+                                    </td>
+                                    <td style="text-align:center">
+                                        <span t-esc="doc[0].td_c3"/>
+                                    </td>
+                                    <td style="text-align:center" rowspan="2">
+                                        <span t-esc="doc[0].test_result"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align:center"> 损失系数(D)</td>
+                                    <td style="text-align:center">
+                                        <span t-esc="doc[0].td_d1"/>
+                                    </td>
+                                    <td style="text-align:center">
+                                        <span t-esc="doc[0].td_d2"/>
+                                    </td>
+                                    <td style="text-align:center">——————</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table style="margin-top:20px;" border="1" cellspacing="0"  width="80%" height="40"  align="center">
+                            <tr>
+                                    <th class="text-center">
+                                        <span>制定值</span>
+                                    </th>
+                                    <th class="text-center">
+                                        <span>C1.C2</span>
+                                    </th>
+                                    <th class="text-center">
+                                        <span>44.00~70.00</span>
+                                    </th>
+                                    <th class="text-center">
+                                        <span>C1~C2</span>
+                                    </th>
+                                    <th class="text-center">
+                                        <span>10.00以下</span>
+                                    </th>
+                                    <th class="text-center">
+                                        <span>D</span>
+                                    </th>
+                                    <th class="text-center">
+                                        <span>0.017以下</span>
+                                    </th>
 
+                                </tr>
+                        </table>
                     </div>
                 </t>
             </t>

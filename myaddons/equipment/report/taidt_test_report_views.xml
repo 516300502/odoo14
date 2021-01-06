@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+    <data>
+
+        <report
+                id="action_taidt_test_report"
+                string="片均压测试报告"
+                model="fcxrang.siken.data"
+                report_type="qweb-html"
+                file="equipment.taidt_test"
+                name="equipment.taidt_test"
+
+        />
+
+        <!--测试-->
+        <template id="taidt_test">
+            <t t-call="web.html_container">
+                <t t-set="doc" t-value="docs[0].with_context({'lang':'en_US'})"/>
+                <t t-call="web.external_layout">
+                    <div>
+                        <div style="margin-top:20px;" class="row">
+                            <h3 style="margin-top:20px;" class="col-12 text-center">
+                                片均压测试报告
+                            </h3>
+                        </div>
+                    </div>
+
+                    <div class="page">
+                        <table width="80%" align="center">
+                                <tr>
+                                    <th>
+                                        <span> Jig:</span>
+                                    </th>
+                                    <td>
+                                        <span t-esc="doc[0].yobi1" />
+                                    </td>
+                                    <th>
+                                        <span > Body No.:</span>
+                                    </th>
+                                    <td >
+                                        <span t-esc="doc[0].bodyno"/>
+                                    </td>
+
+                                    <th>
+                                        <span> 形式(Pilc):</span>
+                                    </th>
+                                    <td>
+                                        <span t-esc="doc[0].pilc"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        <span> 試験日::</span>
+                                    </th>
+                                    <td>
+                                        <span t-esc="doc[0].sikenday" />
+                                    </td>
+                                    <th>
+                                        <span > 温度:</span>
+                                    </th>
+                                    <td >
+                                        <span t-esc="doc[0].ondo"/>
+                                    </td>
+
+                                    <th>
+                                        <span> 湿度:</span>
+                                    </th>
+                                    <td>
+                                        <span t-esc="doc[0].situdo"/>
+                                    </td>
+                                    <th>
+                                        <span> 気圧:</span>
+                                    </th>
+                                    <td>
+                                        <span t-esc="doc[0].kiatu"/>
+                                    </td>
+                                </tr>
+                        </table>
+                        <table border="0" cellspacing="0" cellpadding="5" width="80%" height="80" align="center">
+                            <tr>
+                                <td>
+                                    <table border="1" cellspacing="0" cellpadding="5" width="80%" height="80" align="left">
+                                        <span>[片均压特性实验 (电流值)]</span>
+                                        <thead>
+                                            <tr>
+                                                <th class="text-center">
+                                                    <strong>正压(S1)</strong>
+                                                </th>
+                                                <th class="text-center">
+                                                    <strong>负压(S2)</strong>
+                                                </th>
+                                                <th class="text-center">
+                                                    <strong>(S1-S2)PV值</strong>
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td style="text-align:center">
+                                                    <span t-esc="doc[0].sdata16"/>
+                                                </td>
+                                                <td style="text-align:center">
+                                                    <span t-esc="doc[0].sdata17"/>
+                                                </td>
+                                                <td style="text-align:center">
+                                                    <span t-esc="doc[0].sdata21"/>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                                <td>
+                                    <table border="1" cellspacing="0" cellpadding="5" width="80%" height="80" align="left">
+                                        <span>[静压補正試験]</span>
+                                        <thead>
+                                            <tr>
+                                                <th class="text-center">
+                                                    <strong>補正前PV差</strong>
+                                                </th>
+                                                <th class="text-center">
+                                                    <strong>補正后PV差</strong>
+                                                </th>
+                                                <th class="text-center">
+                                                    <strong>K2</strong>
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td style="text-align:center">
+                                                    <span t-esc="doc[0].sdata26"/>
+                                                </td>
+                                                <td style="text-align:center">
+                                                    <span t-esc="doc[0].sdata28"/>
+                                                </td>
+                                                <td style="text-align:center">
+                                                    <span t-esc="doc[0].sdata33"/>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                        <table style="margin-top:20px;" border="0" cellspacing="0" cellpadding="5" width="80%" height="80" align="center">
+                            <tr>
+                                <td>
+                                    <table  border="1" cellspacing="0"  width="100%" height="80"  align="left">
+                                        <span>[片均压特性实验 (FCX-A2=PV值、以外=电流值)]</span>
+
+                                        <thead>
+                                            <tr>
+                                                <th class="text-center">
+                                                    <strong>印加前(S1)</strong>
+                                                </th>
+                                                <th class="text-center">
+                                                    <strong>------</strong>
+                                                </th>
+                                                <th class="text-center">
+                                                    <strong>印加时(S2)</strong>
+                                                </th>
+                                                <th class="text-center">
+                                                    <strong>------</strong>
+                                                </th>
+                                                <th class="text-center">
+                                                    <strong>S2 - S1</strong>
+                                                </th>
+                                                <th>
+                                                    <strong>総合試験結果</strong>
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td style="text-align:center">
+                                                    <span t-esc="doc[0].sdata40"/>
+                                                </td>
+                                                <td style="text-align:center">
+                                                    <span> ------ </span>
+                                                </td>
+                                                <td style="text-align:center">
+                                                    <span t-esc="doc[0].sdata43"/>
+                                                </td>
+                                                <td style="text-align:center">
+                                                    <span>------  %FS</span>
+                                                </td>
+                                                <td style="text-align:center">
+                                                    <span t-esc="doc[0].sdata26"/>
+                                                </td>
+                                                <td style="text-align:center">
+                                                    <span t-esc="doc[0].sdata01"/>
+                                                </td>
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </t>
+            </t>
+        </template>
+
+    </data>
+</odoo>

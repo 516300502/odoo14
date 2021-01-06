@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+    <data>
+
+        <report
+                id="action_line_test_report"
+                string="直线测试报告"
+                model="siken.data"
+                report_type="qweb-html"
+                file="equipment.line_test"
+                name="equipment.line_test"
+
+        />
+
+        <!--测试-->
+        <template id="line_test">
+            <t t-call="web.html_container">
+                <t t-set="doc" t-value="docs[0].with_context({'lang':'en_US'})"/>
+                <t t-call="web.external_layout">
+                    <div>
+                        <div style="margin-top:20px;" class="row">
+                            <h3 style="margin-top:20px;" class="col-12 text-center">
+                                直线测试报告
+                            </h3>
+                        </div>
+                    </div>
+
+                    <div class="page">
+                        <table width="70%" align="center">
+                                <tr>
+                                    <th>
+                                        <span> Body No.:</span>
+                                    </th>
+                                    <td>
+                                        <span t-esc="doc[0].bodyno" />
+                                    </td>
+                                    <th>
+                                        <span > 形式(Pilc):</span>
+                                    </th>
+                                    <td >
+                                        <span t-esc="doc[0].pilc"/>
+                                    </td>
+                                    <th>
+                                        <span> 試験日:</span>
+                                    </th>
+                                    <td>
+                                        <span t-esc="doc[0].sikenday"/>
+                                    </td>
+                                    <th>
+                                        <span> 総合試験結果:</span>
+                                    </th>
+                                    <td>
+                                        <span t-esc="doc[0].sdata65"/>
+                                    </td>
+                                </tr>
+                        </table>
+                        <table border="1" cellspacing="0" cellpadding="5" width="80%" height="200" align="center">
+                            <thead>
+                                <tr>
+                                    <th class="text-center">
+                                        <strong>压力[%]</strong>
+                                    </th>
+                                    <th class="text-center">
+                                        <strong>マスターデータ</strong>
+                                    </th>
+                                    <th class="text-center">
+                                        <strong>T1</strong>
+                                    </th>
+                                    <th class="text-center">
+                                        <strong>T2</strong>
+                                    </th>
+                                    <th class="text-center">
+                                        <strong>T3</strong>
+                                    </th>
+                                    <th class="text-center">
+                                        <strong>T4</strong>
+                                    </th>
+                                    <th class="text-center">
+                                        <strong>LKA,K结果</strong>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td style="text-align:center"> -100%</td>
+                                    <td style="text-align:center">
+                                        <span t-esc="doc[0].sdata00"/>
+                                    </td>
+                                    <td style="text-align:center">
+                                        <span t-esc="doc[0].sdata05"/>
+                                    </td>
+                                    <td style="text-align:center">
+                                        <span t-esc="doc[0].sdata10"/>
+                                    </td>
+                                    <td style="text-align:center">
+                                        <span t-esc="doc[0].sdata15"/>
+                                    </td>
+                                    <td style="text-align:center">
+                                        <span t-esc="doc[0].sdata16"/>
+                                    </td>
+                                    <td style="text-align:center" rowspan="5">
+                                        <span>GOOD</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align:center"> -50%</td>
+                                    <td style="text-align:center">
+                                        <span t-esc="doc[0].sdata01"/>
+                                    </td>
+                                    <td style="text-align:center">
+                                        <span t-esc="doc[0].sdata06"/>
+                                    </td>
+                                    <td style="text-align:center">
+                                        <span t-esc="doc[0].sdata11"/>
+                                    </td>
+                                    <td style="text-align:center">
+                                        <span>------</span>
+                                    </td>
+                                    <td style="text-align:center">
+                                        <span>------</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align:center"> 0%</td>
+                                    <td style="text-align:center">
+                                        <span t-esc="doc[0].sdata02"/>
+                                    </td>
+                                    <td style="text-align:center">
+                                        <span t-esc="doc[0].sdata07"/>
+                                    </td>
+                                    <td style="text-align:center">
+                                        <span t-esc="doc[0].sdata12"/>
+                                    </td>
+                                    <td style="text-align:center">
+                                        <span>------</span>
+                                    </td>
+                                    <td style="text-align:center">
+                                        <span>------</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align:center"> 50%</td>
+                                    <td style="text-align:center">
+                                        <span t-esc="doc[0].sdata03"/>
+                                    </td>
+                                    <td style="text-align:center">
+                                        <span t-esc="doc[0].sdata08"/>
+                                    </td>
+                                    <td style="text-align:center">
+                                        <span t-esc="doc[0].sdata13"/>
+                                    </td>
+                                    <td style="text-align:center">
+                                        <span>LKA</span>
+                                    </td>
+                                    <td style="text-align:center">
+                                        <span>K</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align:center"> 100%</td>
+                                    <td style="text-align:center">
+                                        <span t-esc="doc[0].sdata04"/>
+                                    </td>
+                                    <td style="text-align:center">
+                                        <span t-esc="doc[0].sdata09"/>
+                                    </td>
+                                    <td style="text-align:center">
+                                        <span t-esc="doc[0].sdata14"/>
+                                    </td>
+                                    <td style="text-align:center">
+                                        <span t-esc="doc[0].sdata17"/>
+                                    </td>
+                                    <td style="text-align:center">
+                                        <span t-esc="doc[0].sdata18"/>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table style="margin-top:15px;" border="1" cellspacing="0"  width="80%" height="80"  align="center">
+                            <thead>
+                                <tr>
+                                    <th class="text-center">
+                                        <strong>调整</strong>
+                                    </th>
+                                    <th colspan="2" class="text-center">
+                                        <strong>D/A的调整</strong>
+                                    </th>
+                                    <th colspan="4" class="text-center">
+                                        <strong>A/D的调整</strong>
+                                    </th>
+                                    <th class="text-center">
+                                        <strong>D/A,A/D结果</strong>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td style="text-align:center"> Zero</td>
+                                    <td style="text-align:center">
+                                        <span>DAS</span>
+                                    </td>
+                                    <td style="text-align:center">
+                                        <span> </span>
+                                    </td>
+                                    <td style="text-align:center">
+                                        <span>PVZ</span>
+                                    </td>
+                                    <td style="text-align:center">
+                                        <span t-esc="doc[0].sdata19"/>
+                                    </td>
+                                    <td style="text-align:center">
+                                        <span>OUTZ</span>
+                                    </td>
+                                    <td style="text-align:center">
+                                        <span t-esc="doc[0].sdata21"/>
+                                    </td>
+                                    <td style="text-align:center" rowspan="2">
+                                        <span>GOOD</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align:center"> Span</td>
+                                    <td style="text-align:center">
+                                        <span>DAS</span>
+                                    </td>
+                                    <td style="text-align:center">
+                                        <span> </span>
+                                    </td>
+                                    <td style="text-align:center">
+                                        <span>PVZ</span>
+                                    </td>
+                                    <td style="text-align:center">
+                                        <span t-esc="doc[0].sdata20"/>
+                                    </td>
+                                    <td style="text-align:center">
+                                        <span>OUTZ</span>
+                                    </td>
+                                    <td style="text-align:center">
+                                        <span t-esc="doc[0].sdata22"/>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </t>
+            </t>
+        </template>
+
+    </data>
+</odoo>
