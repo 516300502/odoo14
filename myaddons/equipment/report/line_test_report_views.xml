@@ -18,6 +18,11 @@
             <t t-call="web.html_container">
                 <t t-set="doc" t-value="docs[0].with_context({'lang':'en_US'})"/>
                 <t t-call="web.external_layout">
+                 <style>
+                      .table td{
+                        border:1px solid #ccc;
+                        }
+                    </style>
                     <div>
                         <div style="margin-top:20px;" class="row">
                             <h3 style="margin-top:20px;" class="col-12 text-center">
@@ -27,58 +32,58 @@
                     </div>
 
                     <div class="page">
-                        <table width="70%" align="center">
+                        <table width="100%">
                                 <tr>
                                     <th>
                                         <span> Body No.:</span>
                                     </th>
-                                    <td>
+                                    <th>
                                         <span t-esc="doc[0].bodyno" />
-                                    </td>
+                                    </th>
                                     <th>
                                         <span > 形式(Pilc):</span>
                                     </th>
-                                    <td >
+                                    <th >
                                         <span t-esc="doc[0].pilc"/>
-                                    </td>
+                                    </th>
                                     <th>
                                         <span> 試験日:</span>
                                     </th>
-                                    <td>
+                                    <th>
                                         <span t-esc="doc[0].sikenday"/>
-                                    </td>
+                                    </th>
                                     <th>
                                         <span> 総合試験結果:</span>
                                     </th>
-                                    <td>
+                                    <th>
                                         <span t-esc="doc[0].sdata65"/>
-                                    </td>
+                                    </th>
                                 </tr>
                         </table>
-                        <table border="1" cellspacing="0" cellpadding="5" width="80%" height="200" align="center">
+                        <table width="100%" class="table table-condensed">
                             <thead>
                                 <tr>
-                                    <th class="text-center">
+                                    <td class="text-center">
                                         <strong>压力[%]</strong>
-                                    </th>
-                                    <th class="text-center">
+                                    </td>
+                                    <td class="text-center">
                                         <strong>マスターデータ</strong>
-                                    </th>
-                                    <th class="text-center">
+                                    </td>
+                                    <td class="text-center">
                                         <strong>T1</strong>
-                                    </th>
-                                    <th class="text-center">
+                                    </td>
+                                    <td class="text-center">
                                         <strong>T2</strong>
-                                    </th>
-                                    <th class="text-center">
+                                    </td>
+                                    <td class="text-center">
                                         <strong>T3</strong>
-                                    </th>
-                                    <th class="text-center">
+                                    </td>
+                                    <td class="text-center">
                                         <strong>T4</strong>
-                                    </th>
-                                    <th class="text-center">
+                                    </td>
+                                    <td class="text-center">
                                         <strong>LKA,K结果</strong>
-                                    </th>
+                                    </td>
                                 </tr>
                             </thead>
                             <tbody>
@@ -177,21 +182,21 @@
                                 </tr>
                             </tbody>
                         </table>
-                        <table style="margin-top:15px;" border="1" cellspacing="0"  width="80%" height="80"  align="center">
+                        <table style="margin-top:15px;" width="100%" class="table table-condensed">
                             <thead>
                                 <tr>
-                                    <th class="text-center">
+                                    <td class="text-center">
                                         <strong>调整</strong>
-                                    </th>
-                                    <th colspan="2" class="text-center">
+                                    </td>
+                                    <td colspan="2" class="text-center">
                                         <strong>D/A的调整</strong>
-                                    </th>
-                                    <th colspan="4" class="text-center">
+                                    </td>
+                                    <td colspan="4" class="text-center">
                                         <strong>A/D的调整</strong>
-                                    </th>
-                                    <th class="text-center">
+                                    </td>
+                                    <td class="text-center">
                                         <strong>D/A,A/D结果</strong>
-                                    </th>
+                                    </td>
                                 </tr>
                             </thead>
                             <tbody>
@@ -201,7 +206,7 @@
                                         <span>DAS</span>
                                     </td>
                                     <td style="text-align:center">
-                                        <span> </span>
+                                        <span> ------- </span>
                                     </td>
                                     <td style="text-align:center">
                                         <span>PVZ</span>
@@ -225,7 +230,7 @@
                                         <span>DAS</span>
                                     </td>
                                     <td style="text-align:center">
-                                        <span> </span>
+                                        <span> ------ </span>
                                     </td>
                                     <td style="text-align:center">
                                         <span>PVZ</span>

@@ -4,20 +4,25 @@
     <data>
 
         <report
-                id="action_ctbltest_data_report"
+                id="action_tbltestdata_report"
                 string="c容量测试报告"
                 model="tbltestdata"
                 report_type="qweb-html"
-                file="equipment.ctbltest_data"
-                name="equipment.ctbltest_data"
+                file="equipment.tbltestdata"
+                name="equipment.tbltestdata"
 
         />
 
         <!--测试-->
-        <template id="ctbltest_data">
+        <template id="tbltestdata">
             <t t-call="web.html_container">
                 <t t-set="doc" t-value="docs[0].with_context({'lang':'en_US'})"/>
                 <t t-call="web.external_layout">
+                    <style>
+                      .table td{
+                        border:1px solid #ccc;
+                        }
+                    </style>
                     <div>
                         <div style="margin-top:20px;" class="row">
                             <h3 style="margin-top:20px;" class="col-12 text-center">
@@ -27,53 +32,53 @@
                     </div>
 
                     <div class="page">
-                        <table width="80%" align="center">
+                        <table width="100%" >
                                 <tr>
                                     <th>
                                         <span> Body No.:</span>
                                     </th>
-                                    <td>
+                                    <th>
                                         <span t-esc="doc[0].bodyno" />
-                                    </td>
+                                    </th>
                                     <th>
                                         <span > コマＮｏ.:</span>
                                     </th>
-                                    <td >
+                                    <th >
                                         <span t-esc="doc[0].komano"/>
-                                    </td>
+                                    </th>
 
                                     <th>
                                         <span> 封入液Ｎｏ.:</span>
                                     </th>
-                                    <td>
+                                    <th>
                                         <span t-esc="doc[0].stdkind"/>
-                                    </td>
+                                    </th>
                                     <th>
                                         <span> 实验日:</span>
                                     </th>
-                                    <td>
+                                    <th>
                                         <span t-esc="doc[0].testdate"/>
-                                    </td>
+                                    </th>
                                 </tr>
                         </table>
-                        <table border="1" cellspacing="0" cellpadding="5" width="80%" height="80" align="center">
+                        <table style="width:100%" class="table table-condensed">
                             <thead>
                                 <tr>
-                                    <th class="text-center">
+                                    <td class="text-center">
                                         <strong>100Khz</strong>
-                                    </th>
-                                    <th class="text-center">
+                                    </td>
+                                    <td class="text-center">
                                         <strong>C1</strong>
-                                    </th>
-                                    <th class="text-center">
+                                    </td>
+                                    <td class="text-center">
                                         <strong>C2</strong>
-                                    </th>
-                                    <th class="text-center">
+                                    </td>
+                                    <td class="text-center">
                                         <strong>C1——C2</strong>
-                                    </th>
-                                    <th class="text-center">
+                                    </td>
+                                    <td class="text-center">
                                         <strong>综合结果</strong>
-                                    </th>
+                                    </td>
                                 </tr>
                             </thead>
                             <tbody>
@@ -104,29 +109,29 @@
                                 </tr>
                             </tbody>
                         </table>
-                        <table style="margin-top:20px;" border="1" cellspacing="0"  width="80%" height="40"  align="center">
+                        <table style="margin-top:20px;" class="table table-condensed">
                             <tr>
-                                    <th class="text-center">
+                                    <td class="text-center">
                                         <span>制定值</span>
-                                    </th>
-                                    <th class="text-center">
+                                    </td>
+                                    <td class="text-center">
                                         <span>C1.C2</span>
-                                    </th>
-                                    <th class="text-center">
+                                    </td>
+                                    <td class="text-center">
                                         <span>44.00~70.00</span>
-                                    </th>
-                                    <th class="text-center">
+                                    </td>
+                                    <td class="text-center">
                                         <span>C1~C2</span>
-                                    </th>
-                                    <th class="text-center">
+                                    </td>
+                                    <td class="text-center">
                                         <span>10.00以下</span>
-                                    </th>
-                                    <th class="text-center">
+                                    </td>
+                                    <td class="text-center">
                                         <span>D</span>
-                                    </th>
-                                    <th class="text-center">
+                                    </td>
+                                    <td class="text-center">
                                         <span>0.017以下</span>
-                                    </th>
+                                    </td>
 
                                 </tr>
                         </table>

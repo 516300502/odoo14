@@ -4,7 +4,7 @@ from odoo import models, fields, api, exceptions, _
 
 
 class Ctbltest_data_report(models.AbstractModel):
-    _name = "report.equipment.ctbltest_data"
+    _name = "report.equipment.tbltestdata"
     _description = 'c容量测试报告'
 
 
